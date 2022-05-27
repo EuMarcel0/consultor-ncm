@@ -1,0 +1,52 @@
+.contactArea {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #386fa4;
+    padding: 7px 30px;
+}
+.contactArea a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.contactArea a:hover{
+    opacity: .8;
+}
+.contactNumber,
+.contactEmail,
+.contactGit,
+.contactLinkedin{
+    font-size: 10px;
+    margin: 0 10px 0 5px;
+}
+.headerArea{
+    background-color: #134074;
+    color: #fff;
+}
+.headerContainer{
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px; 
+}
+.logoArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Dosis', sans-serif;
+    margin-left: 5px;
+}
+.logoArea span{
+    font-weight: bold;
+    font-family: 'Dosis', sans-serif;
+    margin-left: 5px;
+}
+.menuArea ul{
+    display: flex;
+    gap: 20px;
+}
+.menuArea ul a{
+    font-size: .8rem;
+    font-weight: 200;
+}
