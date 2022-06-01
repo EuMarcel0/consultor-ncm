@@ -53,7 +53,6 @@ export const MenuLinks = () => {
                     <MenuItem
                         className={style.menuItem}
                         key={option}
-                        selected={option === 'Pyxis'}
                         onClick={handleClose}
                     >
                         {option}

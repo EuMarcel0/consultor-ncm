@@ -2,10 +2,11 @@ import style from './header.module.css';
 import { Container } from '@material-ui/core';
 import { FaWhatsapp, FaEnvelope, FaBarcode, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MenuLinks }  from '../Menu/menu';
+import { linksSocialMedia } from '../../services';
 
-const linkWhatsApp = 'https://wa.me/5577991776299?text=Ol%C3%A1%2C%20tudo%20bem%3F';
-const linkGitHub = 'https://github.com/EuMarcel0';
-const linkLinkedIn = 'https://www.linkedin.com/in/marcelo-ribeiro-da-silva-aa444921b/';
+const linkWhatsApp = linksSocialMedia.whatsApp;
+const linkGitHub = linksSocialMedia.git;
+const linkLinkedIn = linksSocialMedia.linkedin;
 
 export const Header = () => {
 

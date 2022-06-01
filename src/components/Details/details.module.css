@@ -1,0 +1,32 @@
+.detailsContainer{
+}
+.itemDetailsArea {
+    padding: 10px;
+}
+.itemDetailsArea .itemGtinCode,
+.itemDetailsArea .itemGpcCode,
+.itemDetailsArea .itemGpcDescription,
+.itemDetailsArea .itemPrice,
+.itemDetailsArea .itemAveragePrice,
+.itemDetailsArea .itemPriceMinMax,
+.itemDetailsArea .itemDateUpdated,
+.itemDetailsArea .itemDataOrigin{
+    font-size: .8rem;
+    line-height: 25px;
+}
+.itemDetailsArea .itemBarCodeImage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    margin: 10px auto;
+}
+.itemDetailsArea .itemBarCodeImage img{
+    width: 100px;
+}
+.root{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 20px;
+}
