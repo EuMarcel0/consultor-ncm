@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, useEffect } from 'react'
+import { ChangeEvent, useState, useEffect, createElement } from 'react'
 import style from './App.module.css';
 import { Button, Container, Divider, TextField } from '@material-ui/core';
 import { Header } from './components/Header/header';
@@ -6,13 +6,17 @@ import { FaSearch } from 'react-icons/fa';
 import  DetailsAccordion from './components/Details/details'
 import noImage from './assets/images/no_image.png';
 import { Item } from './Types';
+import React from 'react';
+import { Spin } from './components/SpinLoad/spind';
+
 
 
 function App() {
 	// Endpoint para requisição
 	const BASE_URL = 'https://api.cosmos.bluesoft.com.br/products?query=';
 	
-
+	const spanItem = React.createElement('span', {}, 'Descrição: ')
+	
 	const [searchItem, setBarrasItem] = useState('');
 	const [items, setItems] = useState<Item[]>([]);
 
@@ -76,16 +80,25 @@ function App() {
 						</Button>
 					</div>
 					<div className={style.itemsContainer}>
+						<Spin />
 						{items.map((item) => (
 							<div key={item.gtin} className={style.itemsInfos}>
 								<div className={style.itemsImage}>
 									{item.description? <img src={item.thumbnail? item.thumbnail : imageNotFound} alt="imagem_produto" /> : ''}
 								</div>
 								<div className={style.itemsDetails}>
-									<div className={style.itemDescription}>{ item.description? 'Descrição: ' + item.description : ''}</div>
-									<div className={style.itemNcmCode}>{ item.ncm.code? 'NCM: ' + item.ncm.code : ''}</div>
-									<div className={style.itemNcmDescription}>{ item.ncm.full_description? 'Descrição NCM: ' + item.ncm.full_description : ''}</div>
-									<div>{item.description? <DetailsAccordion details={item}/> : ''}</div>
+									<div className={style.itemDescription}>
+										{item.description? 'Descrição: ' + item.description : ''}
+									</div>
+									<div className={style.itemNcmCode}>
+										{item.ncm.code? 'NCM: ' + item.ncm.code : ''}
+									</div>
+									<div className={style.itemNcmDescription}>
+										{item.ncm.full_description? 'Descrição NCM: ' + item.ncm.full_description : ''}
+									</div>
+									<div>
+										{item.description? <DetailsAccordion details={item}/> : ''}
+									</div>
 								</div>
 							</div>
 						))}

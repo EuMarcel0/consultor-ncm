@@ -62,7 +62,7 @@ li{
   padding: 10px 5px;
 }
 .itemsInfos .itemsDetails{
-  font-weight: 200;
+  font-weight: 400;
 }
 
 .itemsInfos .itemsImage{
@@ -79,6 +79,8 @@ li{
   max-width: 100px;
 }
 
-.itemsInfos .itemDescription{}
+.itemsInfos .itemDescription{
+  
+}
 
 .itemsInfos .itemNcmCode{}
