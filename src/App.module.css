@@ -41,7 +41,8 @@ li{
   width: 50%;
   margin-top: 50px;
 }
-.margin{
+.margin,
+.buttonClear{
   margin-top: 30px !important;
   padding: 30px !important;
   line-height: 0px !important;
@@ -49,7 +50,11 @@ li{
   width: 50% !important;
   background-color: #386fa4 !important;
 }
-
+.buttonClear{
+  background-color: #134074 !important;
+  margin-top: 10px !important;
+  padding: 24px !important;
+}
 .itemsContainer{
   width: 60%;
   margin: 20px auto;
@@ -62,9 +67,12 @@ li{
   padding: 10px 5px;
 }
 .itemsInfos .itemsDetails{
-  font-weight: 400;
+  font-weight: 200;
 }
-
+.itemsDetails span{
+  color: #386fa4;
+  font-weight: bold;
+}
 .itemsInfos .itemsImage{
   width: 100%;
   display: flex;
@@ -78,9 +86,9 @@ li{
   width: 100%;
   max-width: 100px;
 }
-
-.itemsInfos .itemDescription{
-  
+.loading{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.itemsInfos .itemNcmCode{}

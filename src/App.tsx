@@ -6,8 +6,8 @@ import { FaSearch } from 'react-icons/fa';
 import  DetailsAccordion from './components/Details/details'
 import noImage from './assets/images/no_image.png';
 import { Item } from './Types';
-import React from 'react';
 import { Spin } from './components/SpinLoad/spind';
+import { AlertInput } from './components/AlertInput/alertInput';
 
 
 
@@ -15,31 +15,46 @@ function App() {
 	// Endpoint para requisição
 	const BASE_URL = 'https://api.cosmos.bluesoft.com.br/products?query=';
 	
-	const spanItem = React.createElement('span', {}, 'Descrição: ')
+	const [loading, setLoading] = useState(false);
+	const [clearResult, setClearResult] = useState(false);
+	const [alertInput, setAlertInput] = useState(false);
 	
-	const [searchItem, setBarrasItem] = useState('');
+	const [searchItem, setSearchItem] = useState('');
 	const [items, setItems] = useState<Item[]>([]);
 
 	const imageNotFound = noImage;
 
 	const handleInputArea = (e: ChangeEvent<HTMLInputElement>) => {
-		setBarrasItem(e.target.value);
+		setSearchItem(e.target.value);
 	}
 
 	// Requisição para o servidor do COSMOS NCM
 
 	const handleSearchItem = async () => {
-		let response = await fetch(`${BASE_URL}${searchItem}`, {
-			headers: {
-				'Content-Type': 'application/json',
-				'X-Cosmos-Token': 'HeCelp4qdoKSY8oORf-7uQ',
-				'User-Agent': 'Cosmos-API-Request'
-			}
-		})
-		
-		let data = await response.json();
-		setItems(data.products)
+		if(searchItem === ''){
+			setAlertInput(true)
+		}else{
+			setLoading(true)
+			let response = await fetch(`${BASE_URL}${searchItem}`, {
+				headers: {
+					'Content-Type': 'application/json',
+					'X-Cosmos-Token': 'HeCelp4qdoKSY8oORf-7uQ',
+					'User-Agent': 'Cosmos-API-Request'
+				}
+			})
+			setLoading(false)
+			setClearResult(true)
+			setAlertInput(false)
+			let data = await response.json();
+			setItems(data.products)
+		}
 	}
+
+	const handleClearResults = () => {
+		setItems([]);
+		setClearResult(false);
+	}
+
 	useEffect(() => {
 		console.log(items);
 	}, [items])
@@ -78,9 +93,27 @@ function App() {
 						>
 							Buscar
 						</Button>
+						{alertInput && 
+							<AlertInput />
+						}
+						{clearResult &&
+						<Button
+							variant="contained"
+							size="medium"
+							className={style.buttonClear}
+							onClick={handleClearResults}
+							color='secondary'
+						>
+							Limpar resultados
+						</Button>
+						}
 					</div>
 					<div className={style.itemsContainer}>
-						<Spin />
+						{loading &&
+							<div className={style.loading}>
+								<Spin />
+							</div>
+						}
 						{items.map((item) => (
 							<div key={item.gtin} className={style.itemsInfos}>
 								<div className={style.itemsImage}>
@@ -88,13 +121,19 @@ function App() {
 								</div>
 								<div className={style.itemsDetails}>
 									<div className={style.itemDescription}>
-										{item.description? 'Descrição: ' + item.description : ''}
+										{item.description && 
+										<span>Descrição: </span>}
+										{item.description}
 									</div>
 									<div className={style.itemNcmCode}>
-										{item.ncm.code? 'NCM: ' + item.ncm.code : ''}
+										{item.ncm.code && 
+										<span>NCM: </span>}
+										{item.ncm.code}
 									</div>
 									<div className={style.itemNcmDescription}>
-										{item.ncm.full_description? 'Descrição NCM: ' + item.ncm.full_description : ''}
+										{item.ncm.full_description&&
+										<span>Descrição NCM: </span>}
+										{item.ncm.full_description}
 									</div>
 									<div>
 										{item.description? <DetailsAccordion details={item}/> : ''}
