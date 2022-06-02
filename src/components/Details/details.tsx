@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type DetailsProps = {
-    details: Item[];
+    details: Item;
 }
 
 
@@ -54,41 +54,38 @@ export default function DetailsAccordion({details} : DetailsProps) {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        <div className={style.detailsContainer}>{
-                            details.map((item) => (
-                                <div key={item.barcode_image} className={style.itemDetailsArea}>
+                        <div className={style.detailsContainer}>
+                                <div key={details.barcode_image} className={style.itemDetailsArea}>
                                     <div className={style.itemGtinCode}>
-                                        {item.gtin? 'Código de barras: '+item.gtin : ''}
+                                        {details.gtin? 'Código de barras: '+details.gtin : ''}
                                     </div>
                                      <div className={style.itemGpcCode}>
-                                        {item.cest === undefined? '' : 'Código GPC: '+item.cest.code}
+                                        {details.cest === undefined? '' : 'Código GPC: '+details.cest.code}
                                     </div>
                                      <div className={style.itemGpcDescription}>
-                                        {item.cest === undefined? '' : 'Descrição código GPC: '+item.cest.description}
+                                        {details.cest === undefined? '' : 'Descrição código GPC: '+details.cest.description}
                                     </div>
                                     <div className={style.itemPrice}>
-                                        {item.price? 'Preço: '+item.price : ''}
+                                        {details.price? 'Preço: '+details.price : ''}
                                     </div>
                                     <div className={style.itemAveragePrice}>
-                                        {item.avg_price? 'Preço médio: '+ 'R$ '+item.avg_price : ''}
+                                        {details.avg_price? 'Preço médio: '+ 'R$ '+details.avg_price : ''}
                                     </div>
                                     <div className={style.itemPriceMinMax}>
-                                        {item.min_price && item.max_price?
-                                        'Preço mínimo e máximo: '+'R$ '+item.min_price+
-                                        ' <-> '+'R$'+item.max_price : '' }
+                                        {details.min_price && details.max_price?
+                                        'Preço mínimo e máximo: '+'R$ '+details.min_price+
+                                        ' <-> '+'R$'+details.max_price : '' }
                                     </div>
                                     <div className={style.itemDateUpdated}>
-                                        {item.updated_at? 'Data de atualização: '+item.updated_at : ''}
+                                        {details.updated_at? 'Data de atualização: '+details.updated_at : ''}
                                     </div>
                                     <div className={style.itemDataOrigin}>
-                                        {item.origin? 'Fonte dos dados: '+item.origin : ''}
+                                        {details.origin? 'Fonte dos dados: '+details.origin : ''}
                                     </div>
                                     <div className={style.itemBarCodeImage}>
-                                        <img src={item.barcode_image} alt="" />
+                                        <img src={details.barcode_image} alt="" />
                                     </div>
                                 </div>
-                            ))
-                        }
                         </div>
                     </Typography>
                 </AccordionDetails>

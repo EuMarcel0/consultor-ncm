@@ -85,7 +85,7 @@ function App() {
 									<div className={style.itemDescription}>{ item.description? 'Descrição: ' + item.description : ''}</div>
 									<div className={style.itemNcmCode}>{ item.ncm.code? 'NCM: ' + item.ncm.code : ''}</div>
 									<div className={style.itemNcmDescription}>{ item.ncm.full_description? 'Descrição NCM: ' + item.ncm.full_description : ''}</div>
-									<div>{item.description? <DetailsAccordion details={items}/> : ''}</div>
+									<div>{item.description? <DetailsAccordion details={item}/> : ''}</div>
 								</div>
 							</div>
 						))}
