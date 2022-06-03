@@ -1,24 +1,23 @@
-import { ChangeEvent, useState, useEffect, createElement } from 'react'
+import { ChangeEvent, useState, useEffect, createElement, useRef } from 'react'
 import style from './App.module.css';
 import { Button, Container, Divider, TextField } from '@material-ui/core';
 import { Header } from './components/Header/header';
 import { FaSearch } from 'react-icons/fa';
-import  DetailsAccordion from './components/Details/details'
+import DetailsAccordion from './components/Details/details'
 import noImage from './assets/images/no_image.png';
 import { Item } from './Types';
 import { Spin } from './components/SpinLoad/spind';
 import { AlertInput } from './components/AlertInput/alertInput';
 
 
-
 function App() {
 	// Endpoint para requisição
 	const BASE_URL = 'https://api.cosmos.bluesoft.com.br/products?query=';
-	
+
 	const [loading, setLoading] = useState(false);
 	const [clearResult, setClearResult] = useState(false);
 	const [alertInput, setAlertInput] = useState(false);
-	
+
 	const [searchItem, setSearchItem] = useState('');
 	const [items, setItems] = useState<Item[]>([]);
 
@@ -31,9 +30,9 @@ function App() {
 	// Requisição para o servidor do COSMOS NCM
 
 	const handleSearchItem = async () => {
-		if(searchItem === ''){
+		if (searchItem === '') {
 			setAlertInput(true)
-		}else{
+		} else {
 			setLoading(true)
 			let response = await fetch(`${BASE_URL}${searchItem}`, {
 				headers: {
@@ -55,10 +54,6 @@ function App() {
 		setClearResult(false);
 	}
 
-	useEffect(() => {
-		console.log(items);
-	}, [items])
-
 	return (
 		<>
 			<Header />
@@ -69,9 +64,9 @@ function App() {
 							<h1>Consulte o NCM do seu produto</h1>
 							<FaSearch />
 						</div>
-						<form 
+						<form
 							className={style.root}
-							noValidate 
+							noValidate
 							autoComplete="off"
 							onSubmit={e => e.preventDefault()}
 						>
@@ -93,19 +88,19 @@ function App() {
 						>
 							Buscar
 						</Button>
-						{alertInput && 
+						{alertInput &&
 							<AlertInput />
 						}
 						{clearResult &&
-						<Button
-							variant="contained"
-							size="medium"
-							className={style.buttonClear}
-							onClick={handleClearResults}
-							color='secondary'
-						>
-							Limpar resultados
-						</Button>
+							<Button
+								variant="contained"
+								size="medium"
+								className={style.buttonClear}
+								onClick={handleClearResults}
+								color='secondary'
+							>
+								Limpar resultados
+							</Button>
 						}
 					</div>
 					<div className={style.itemsContainer}>
@@ -117,37 +112,29 @@ function App() {
 						{items.map((item) => (
 							<div key={item.gtin} className={style.itemsInfos}>
 								<div className={style.itemsImage}>
-									{item.description? <img src={item.thumbnail? item.thumbnail : imageNotFound} alt="imagem_produto" /> : ''}
+									{item.description ? <img src={item.thumbnail ? item.thumbnail : imageNotFound} alt="imagem_produto" /> : ''}
 								</div>
 								<div className={style.itemsDetails}>
 									<div className={style.itemDescription}>
-										{item.description && 
-										<span>Descrição: </span>}
+										{item.description &&
+											<span>Descrição: </span>}
 										{item.description}
-<<<<<<< HEAD
-									</div>
-										{/* {item.description? 'Descrição: ' + item.description : ''} */}
-=======
->>>>>>> 5cea7f3f6149ca78e0abb09344b5a22a07cbd8d8
-									</div>
-									<div className={style.itemNcmCode}>
-										{item.ncm.code && 
-										<span>NCM: </span>}
-										{item.ncm.code}
-									</div>
-									<div className={style.itemNcmDescription}>
-<<<<<<< HEAD
-										{item.ncm.full_description &&
-=======
-										{item.ncm.full_description&&
->>>>>>> 5cea7f3f6149ca78e0abb09344b5a22a07cbd8d8
-										<span>Descrição NCM: </span>}
-										{item.ncm.full_description}
-									</div>
-									<div>
-										{item.description? <DetailsAccordion details={item}/> : ''}
 									</div>
 								</div>
+								<div className={style.itemNcmCode}>
+									{item.ncm.code &&
+										<span>NCM: </span>}
+									{item.ncm.code}
+								</div>
+								<div className={style.itemNcmDescription}>
+									{item.ncm.full_description &&
+										<span>Descrição NCM: </span>}
+									{item.ncm.full_description}
+								</div>
+								<div>
+									{item.description ? <DetailsAccordion details={item} /> : ''}
+								</div>
+							</div>
 						))}
 					</div>
 				</Container>

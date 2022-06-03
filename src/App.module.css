@@ -66,12 +66,10 @@ li{
   justify-content: center;
   padding: 10px 5px;
 }
-.itemsInfos .itemsDetails{
+.itemsInfos .itemsDetails,
+.itemNcmCode,
+.itemNcmDescription{
   font-weight: 200;
-}
-.itemsDetails span{
-  color: #386fa4;
-  font-weight: bold;
 }
 .itemsInfos .itemsImage{
   width: 100%;
@@ -81,24 +79,19 @@ li{
   border-bottom: 1px solid #5a82a856;
   padding: 20px 10px;
 }
-
 .itemsInfos .itemsImage img{
   width: 100%;
   max-width: 100px;
 }
-<<<<<<< HEAD
-
 .itemsInfos span{
     color: #386fa4;
     font-weight: bold;
 }
-
-.itemsInfos .itemNcmCode{}
-=======
 .loading{
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 70px;
 }
->>>>>>> 5cea7f3f6149ca78e0abb09344b5a22a07cbd8d8
+

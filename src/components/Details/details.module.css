@@ -32,6 +32,14 @@
 }
 
 .detailsContainer span{
-    color: #386fa4;
     font-weight: 400;
+}
+.itemDateUpdateSpan{
+    color: rgba(0, 0, 0, 0.87) !important;
+    font-size: .9rem !important;
+}
+.heading{    
+    font-size: .7rem !important;
+    flex-basis: 33.33%;
+    flex-shrink: 0;
 }

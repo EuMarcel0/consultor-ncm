@@ -42,24 +42,26 @@ export default function DetailsAccordion({details} : DetailsProps) {
         setExpanded(isExpanded ? panel : false);
     };
 
+    let updateYear = new Date(details.updated_at);
+    let updateMonth = new Date(details.updated_at);
+    let updateDay = new Date(details.updated_at);
+
     return (
         <div className={style.root}>
-            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} className={style.accordionDetails}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                 >
-                    <Typography className={classes.heading}>Mais detalhes</Typography>
+                    <Typography className={style.heading}>Mais detalhes</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
                         <div className={style.detailsContainer}>
                                 <div key={details.barcode_image} className={style.itemDetailsArea}>
                                     <div className={style.itemGtinCode}>
-                                        {details.gtin && 
-                                        <span>Código de barras: </span>}
-                                        {details.gtin}
+                                        {details.gtin? 'Código de barras: '+details.gtin : ''}
                                     </div>
                                      <div className={style.itemGpcCode}>
                                         {details.cest === undefined? '' : 'Código GPC: '+details.cest.code}
@@ -76,10 +78,14 @@ export default function DetailsAccordion({details} : DetailsProps) {
                                     <div className={style.itemPriceMinMax}>
                                         {details.min_price && details.max_price?
                                         'Preço mínimo e máximo: '+'R$ '+details.min_price+
-                                        ' <-> '+'R$'+details.max_price : '' }
+                                        ' <-> '+'R$ '+details.max_price : '' }
                                     </div>
                                     <div className={style.itemDateUpdated}>
-                                        {details.updated_at? 'Data de atualização: '+details.updated_at : ''}
+                                        {details.updated_at && 
+                                            <span className={style.itemDateUpdateSpan}>Data atualização: </span>}
+                                        {updateDay.getDay() < 10? '0'+updateDay.getDay()+'-' : ''}
+                                        {updateMonth.getMonth() < 10? '0'+updateMonth.getMonth()+'-' : ''}
+                                        {updateYear.getFullYear()}
                                     </div>
                                     <div className={style.itemDataOrigin}>
                                         {details.origin? 'Fonte dos dados: '+details.origin : ''}
