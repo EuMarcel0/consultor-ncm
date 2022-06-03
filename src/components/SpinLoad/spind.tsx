@@ -1,13 +1,12 @@
-import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: 'flex',
+      width: '100%',
       '& > * + *': {
-        marginLeft: theme.spacing(2),
+        marginTop: theme.spacing(2),
       },
     },
   }),
@@ -17,7 +16,7 @@ export const Spin = () => {
     const classes = useStyles();
     return(
         <div className={classes.root}>
-            <CircularProgress />
-        </div>
+        <LinearProgress />
+      </div>
     );
 }
