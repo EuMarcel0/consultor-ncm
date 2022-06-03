@@ -79,8 +79,9 @@ li{
   max-width: 100px;
 }
 
-.itemsInfos .itemDescription{
-  
+.itemsInfos span{
+    color: #386fa4;
+    font-weight: bold;
 }
 
 .itemsInfos .itemNcmCode{}

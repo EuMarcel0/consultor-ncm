@@ -57,7 +57,9 @@ export default function DetailsAccordion({details} : DetailsProps) {
                         <div className={style.detailsContainer}>
                                 <div key={details.barcode_image} className={style.itemDetailsArea}>
                                     <div className={style.itemGtinCode}>
-                                        {details.gtin? 'Código de barras: '+details.gtin : ''}
+                                        {details.gtin && 
+                                        <span>Código de barras: </span>}
+                                        {details.gtin}
                                     </div>
                                      <div className={style.itemGpcCode}>
                                         {details.cest === undefined? '' : 'Código GPC: '+details.cest.code}

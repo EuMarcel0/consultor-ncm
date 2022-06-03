@@ -88,19 +88,26 @@ function App() {
 								</div>
 								<div className={style.itemsDetails}>
 									<div className={style.itemDescription}>
-										{item.description? 'Descrição: ' + item.description : ''}
+										{item.description && 
+										<span>Descrição: </span>}
+										{item.description}
+									</div>
+										{/* {item.description? 'Descrição: ' + item.description : ''} */}
 									</div>
 									<div className={style.itemNcmCode}>
-										{item.ncm.code? 'NCM: ' + item.ncm.code : ''}
+										{item.ncm.code && 
+										<span>NCM: </span>}
+										{item.ncm.code}
 									</div>
 									<div className={style.itemNcmDescription}>
-										{item.ncm.full_description? 'Descrição NCM: ' + item.ncm.full_description : ''}
+										{item.ncm.full_description &&
+										<span>Descrição NCM: </span>}
+										{item.ncm.full_description}
 									</div>
 									<div>
 										{item.description? <DetailsAccordion details={item}/> : ''}
 									</div>
 								</div>
-							</div>
 						))}
 					</div>
 				</Container>

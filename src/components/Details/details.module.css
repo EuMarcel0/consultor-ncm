@@ -11,7 +11,7 @@
 .itemDetailsArea .itemPriceMinMax,
 .itemDetailsArea .itemDateUpdated,
 .itemDetailsArea .itemDataOrigin{
-    font-size: .8rem;
+    font-size: .9rem;
     line-height: 25px;
 }
 .itemDetailsArea .itemBarCodeImage{
@@ -29,4 +29,9 @@
     justify-content: center !important;
     align-items: center !important;
     margin-top: 20px;
+}
+
+.detailsContainer span{
+    color: #386fa4;
+    font-weight: 400;
 }
