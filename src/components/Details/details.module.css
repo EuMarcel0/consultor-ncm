@@ -1,7 +1,7 @@
 .detailsContainer{
 }
 .itemDetailsArea {
-    padding: 10px;
+    width: 100%;
 }
 .itemDetailsArea .itemGtinCode,
 .itemDetailsArea .itemGpcCode,
@@ -24,6 +24,10 @@
 .itemDetailsArea .itemBarCodeImage img{
     width: 100px;
 }
+.itemDataOrigin a{
+    color: rgba(0, 0, 0, 0.87);
+    text-decoration: line;
+}
 .root{
     display: flex !important;
     justify-content: center !important;
@@ -39,7 +43,7 @@
     font-size: .9rem !important;
 }
 .heading{    
-    font-size: .7rem !important;
+    font-size: .65rem !important;
     flex-basis: 33.33%;
     flex-shrink: 0;
 }

@@ -7,10 +7,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import React from 'react';
 import { Item } from '../../Types';
 import style from './details.module.css';
-import Barcode from '../../assets/images/barcode.png';
 
-const imageBarcodeNotFound = Barcode;
-
+const originDataUrl = 'https://cosmos.bluesoft.com.br/';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -36,7 +34,9 @@ type DetailsProps = {
 
 export default function DetailsAccordion({details} : DetailsProps) {
     const classes = useStyles();
+
     const [expanded, setExpanded] = React.useState<string | false>(false);
+
 
     const handleChange = (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
         setExpanded(isExpanded ? panel : false);
@@ -61,34 +61,46 @@ export default function DetailsAccordion({details} : DetailsProps) {
                         <div className={style.detailsContainer}>
                                 <div key={details.barcode_image} className={style.itemDetailsArea}>
                                     <div className={style.itemGtinCode}>
-                                        {details.gtin? 'Código de barras: '+details.gtin : ''}
+                                        {details.ncm.full_description && 
+                                            <span>Descrição NCM: </span>}
+                                        {details.ncm.full_description}
+                                    </div>
+                                    <div className={style.itemGtinCode}>
+                                        {details.gtin && 
+                                            <span>Código de barras: </span>}
+                                        {details.gtin}
                                     </div>
                                      <div className={style.itemGpcCode}>
-                                        {details.cest === undefined? '' : 'Código GPC: '+details.cest.code}
+                                        {details.gpc?.code &&
+                                            <span>GPC: </span>}
+                                        {details.gpc?.code === undefined? '' :  details.gpc.code}
                                     </div>
                                      <div className={style.itemGpcDescription}>
-                                        {details.cest === undefined? '' : 'Descrição código GPC: '+details.cest.description}
+                                        {details.gpc?.description &&
+                                            <span>Descrição GPC: </span>}
+                                        {details.gpc?.description === undefined? '' :  details.gpc?.description}
                                     </div>
                                     <div className={style.itemPrice}>
-                                        {details.price? 'Preço: '+details.price : ''}
+                                        {details.price &&
+                                            <span>Preço: </span>}
+                                        {details.price}
                                     </div>
                                     <div className={style.itemAveragePrice}>
-                                        {details.avg_price? 'Preço médio: '+ 'R$ '+details.avg_price : ''}
-                                    </div>
-                                    <div className={style.itemPriceMinMax}>
-                                        {details.min_price && details.max_price?
-                                        'Preço mínimo e máximo: '+'R$ '+details.min_price+
-                                        ' <-> '+'R$ '+details.max_price : '' }
+                                        {details.avg_price &&  
+                                            <span>Preço médio: </span>}
+                                        {details.avg_price === null? '' : 'R$ '+details.avg_price}
                                     </div>
                                     <div className={style.itemDateUpdated}>
                                         {details.updated_at && 
-                                            <span className={style.itemDateUpdateSpan}>Data atualização: </span>}
-                                        {updateDay.getDay() < 10? '0'+updateDay.getDay()+'-' : ''}
-                                        {updateMonth.getMonth() < 10? '0'+updateMonth.getMonth()+'-' : ''}
+                                            <span>Data atualização: </span>}
+                                        {updateDay.getDay() < 10? '0'+updateDay.getDay()+'.' : ''}
+                                        {updateMonth.getMonth() < 10? '0'+updateMonth.getMonth()+'.' : ''}
                                         {updateYear.getFullYear()}
                                     </div>
                                     <div className={style.itemDataOrigin}>
-                                        {details.origin? 'Fonte dos dados: '+details.origin : ''}
+                                        {details.origin && 
+                                            <span>Fonte: </span>}
+                                        <a href={originDataUrl} target="_blank">{details.origin}</a>
                                     </div>
                                     <div className={style.itemBarCodeImage}>
                                         <img src={details.barcode_image} alt="" />

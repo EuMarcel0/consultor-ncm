@@ -8,6 +8,7 @@ import noImage from './assets/images/no_image.png';
 import { Item } from './Types';
 import { Spin } from './components/SpinLoad/spind';
 import { AlertInput } from './components/AlertInput/alertInput';
+import ScrollToTop from 'react-scroll-to-top';
 
 
 function App() {
@@ -49,6 +50,12 @@ function App() {
 		}
 	}
 
+	const handleEnterSearchItem = (event: React.KeyboardEvent<HTMLInputElement>) => {	
+		if(event.code === 'Enter') {
+			handleSearchItem()
+		}
+	}
+
 	const handleClearResults = () => {
 		setItems([]);
 		setClearResult(false);
@@ -77,6 +84,7 @@ function App() {
 								fullWidth
 								color="primary"
 								onChange={handleInputArea}
+								onKeyUp={handleEnterSearchItem}
 							/>
 						</form>
 						<Button
@@ -126,11 +134,11 @@ function App() {
 										<span>NCM: </span>}
 									{item.ncm.code}
 								</div>
-								<div className={style.itemNcmDescription}>
+								{/* <div className={style.itemNcmDescription}>
 									{item.ncm.full_description &&
 										<span>Descrição NCM: </span>}
 									{item.ncm.full_description}
-								</div>
+								</div> */}
 								<div>
 									{item.description ? <DetailsAccordion details={item} /> : ''}
 								</div>
@@ -138,6 +146,11 @@ function App() {
 						))}
 					</div>
 				</Container>
+				<div>
+					<ScrollToTop 
+					smooth
+					color='blue'/>
+				</div>
 			</div>
 		</>
 	);
