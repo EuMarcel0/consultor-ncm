@@ -3,9 +3,9 @@
 🚧Deploying...🚧
 
 
-<img src='assets/images/project_print0.png'>
-<img src='assets/images/project_print1.png'>
-<img src='assets/images/project_print2.png'>
+<img src='src/assets/images/project_print0.png'>
+<img src='src/assets/images/project_print1.png'>
+<img src='src/assets/images/project_print2.png'>
 
 Esta aplicação foi desenvolvida para buscar NCMs de mercadorias e mostrar em tela para o usuário. Ela está consumindo uma API do [COSMOS](https://cosmos.bluesoft.com.br/api) e que tem um limite máximo de consultas por dia. 
 Todo o design do projeto foi pensado e desenvolvido por mim, buscando sempre trazer uma aplicação leve e visualmente intuitiva.
