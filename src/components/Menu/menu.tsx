@@ -4,18 +4,17 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import style from './menu.module.css';
+import {LinkConsultCosmos} from '../../services';
 
 
-const options = [
-    'GPC',
-    'NCM',
-    'CEST',
-];
+const consultGpc = LinkConsultCosmos.gpcAllCosmos;
+const consultNcm = LinkConsultCosmos.ncmAllCosmos;
 
 const ITEM_HEIGHT = 48;
 
 export const MenuLinks = () => {
     const [anchorEl, setAnchorEl] = useState(null);
+    const [list, setList] = useState(false);
     const open = Boolean(anchorEl);
 
     const handleClick = (event: React.MouseEvent<any>) => {
@@ -27,7 +26,7 @@ export const MenuLinks = () => {
     };
 
     return (
-        <div>
+        <div className={style.muneAllArea}>
             <IconButton
                 aria-label="more"
                 aria-controls="long-menu"
@@ -38,6 +37,7 @@ export const MenuLinks = () => {
             </IconButton>
             <Menu
                 id="long-menu"
+                className={style.longMenu}
                 anchorEl={anchorEl}
                 keepMounted
                 open={open}
@@ -49,15 +49,22 @@ export const MenuLinks = () => {
                     },
                 }}
             >
-                {options.map((option) => (
-                    <MenuItem
-                        className={style.menuItem}
-                        key={option}
-                        onClick={handleClose}
+                <div className={style.gpcButtonArea} onClick={handleClose}>
+                    <a href={consultGpc} 
+                    className={style.gpcButton}
+                    target="_blank"
                     >
-                        {option}
-                    </MenuItem>
-                ))}
+                        GPC - Cosmos
+                    </a>
+                </div>
+                <div className={style.ncmButtonArea} onClick={handleClose}>
+                    <a href={consultNcm} 
+                    className={style.ncmButton}
+                    target="_blank"
+                    >
+                        NCM - Cosmos
+                    </a>
+                </div>
             </Menu>
         </div>
     );

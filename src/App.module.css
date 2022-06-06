@@ -16,9 +16,10 @@ li{
   list-style: none;
 }
 
-.mainFullArea{
-  height: calc(100vh - 97px);
-}
+.container{
+  min-height: 84vh;
+  max-height: auto;
+} 
 .searchInput{
   display: flex;
   flex-direction: column;
@@ -65,13 +66,8 @@ li{
   align-items: center;
   justify-content: center;
   padding: 10px 5px;
-  /* border-top: 1px solid #5a82a856;
-  border-bottom: 1px solid #5a82a856; */
-  
 }
-.itemsInfos:nth-child(even){
-  background-color: #6c89a416;
-}
+
 .itemsInfos .itemsDetails,
 .itemNcmCode,
 .itemNcmDescription{
@@ -90,8 +86,8 @@ li{
   max-width: 100px;
 }
 .itemsInfos span{
-    color: #386fa4;
-    font-weight: bold;
+  color: #386fa4;
+  font-weight: bold;
 }
 .loading{
   width: 100%;
@@ -100,4 +96,8 @@ li{
   align-items: center;
   margin-top: 70px;
 }
-
+.clearResults{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

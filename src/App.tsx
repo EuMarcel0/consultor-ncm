@@ -9,15 +9,19 @@ import { Item } from './Types';
 import { Spin } from './components/SpinLoad/spind';
 import { AlertInput } from './components/AlertInput/alertInput';
 import ScrollToTop from 'react-scroll-to-top';
+import { Footer } from './components/Footer/footer';
+import { AlertNoResults } from './components/AlertNoResults/alertNoResult';
 
 
 function App() {
 	// Endpoint para requisição
+
 	const BASE_URL = 'https://api.cosmos.bluesoft.com.br/products?query=';
 
 	const [loading, setLoading] = useState(false);
 	const [clearResult, setClearResult] = useState(false);
 	const [alertInput, setAlertInput] = useState(false);
+	const [alertNoResult, setAlertNoResult] = useState(false);
 
 	const [searchItem, setSearchItem] = useState('');
 	const [items, setItems] = useState<Item[]>([]);
@@ -33,12 +37,13 @@ function App() {
 	const handleSearchItem = async () => {
 		if (searchItem === '') {
 			setAlertInput(true)
+			setAlertNoResult(false)
 		} else {
 			setLoading(true)
 			let response = await fetch(`${BASE_URL}${searchItem}`, {
 				headers: {
 					'Content-Type': 'application/json',
-					'X-Cosmos-Token': 'HeCelp4qdoKSY8oORf-7uQ',
+					'X-Cosmos-Token': 'K1-bSevW2CDAGQf3jXCnGw',
 					'User-Agent': 'Cosmos-API-Request'
 				}
 			})
@@ -47,6 +52,14 @@ function App() {
 			setAlertInput(false)
 			let data = await response.json();
 			setItems(data.products)
+			if(data.total_count === 0){
+				setAlertNoResult(true)
+				setClearResult(false)
+			}else{
+				setAlertNoResult(false)
+				setClearResult(true)
+			}
+			
 		}
 	}
 
@@ -65,7 +78,7 @@ function App() {
 		<>
 			<Header />
 			<div className={style.mainFullArea}>
-				<Container>
+				<Container className={style.container}>
 					<div className={style.searchInput}>
 						<div className={style.searcheTextAndIcon}>
 							<h1>Consulte o NCM do seu produto</h1>
@@ -99,6 +112,9 @@ function App() {
 						{alertInput &&
 							<AlertInput />
 						}
+						{alertNoResult &&
+							<AlertNoResults />
+						}
 						{clearResult &&
 							<Button
 								variant="contained"
@@ -118,34 +134,45 @@ function App() {
 							</div>
 						}
 						{items.map((item) => (
-							<div key={item.gtin} className={style.itemsInfos}>
-								<div className={style.itemsImage}>
-									{item.description ? <img src={item.thumbnail ? item.thumbnail : imageNotFound} alt="imagem_produto" /> : ''}
-								</div>
-								<div className={style.itemsDetails}>
-									<div className={style.itemDescription}>
-										{item.description &&
-											<span>Descrição: </span>}
-										{item.description}
+							<>
+								<div key={item.gtin} className={style.itemsInfos}>
+									<div className={style.itemsImage}>
+										{item.description ? <img src={item.thumbnail ? item.thumbnail : imageNotFound} alt="imagem_produto" /> : ''}
+									</div>
+									<div className={style.itemsDetails}>
+										<div className={style.itemDescription}>
+											{item.description &&
+												<span>Descrição: </span>}
+											{item.description}
+										</div>
+									</div>
+									<div className={style.itemNcmCode}>
+										{item.ncm.code &&
+											<span>NCM: </span>}
+										{item.ncm.code}
+									</div>
+									<div>
+										{item.description ? <DetailsAccordion details={item} /> : ''}
 									</div>
 								</div>
-								<div className={style.itemNcmCode}>
-									{item.ncm.code &&
-										<span>NCM: </span>}
-									{item.ncm.code}
-								</div>
-								{/* <div className={style.itemNcmDescription}>
-									{item.ncm.full_description &&
-										<span>Descrição NCM: </span>}
-									{item.ncm.full_description}
-								</div> */}
-								<div>
-									{item.description ? <DetailsAccordion details={item} /> : ''}
-								</div>
-							</div>
+							</>
 						))}
+						{clearResult &&
+							<div className={style.clearResults}>
+								<Button
+									variant="contained"
+									size="medium"
+									className={style.buttonClear}
+									onClick={handleClearResults}
+									color='secondary'
+								>
+									Limpar resultados
+								</Button>
+							</div>
+						}
 					</div>
 				</Container>
+				<Footer />
 				<div>
 					<ScrollToTop 
 					smooth

@@ -1,6 +1,27 @@
+.longMenu{
+    margin-top: 40px;
+}
 .buttonMenu{
     color: #fff !important;
 }
 .menuItem{
     font-size: .8rem !important;
+}
+.gpcButtonArea,
+.ncmButtonArea{
+    width: 100%;
+    padding: 5px 10px;
+    transition: all .2s ease-in-out;
+   
+}
+.gpcButton,
+.ncmButton{
+    background-color: transparent;
+    cursor: pointer;
+    color: #383838;
+    font-size: 12px;
+}
+.gpcButton:hover,
+.ncmButton:hover{
+    color: #999;
 }

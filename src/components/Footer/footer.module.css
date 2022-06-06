@@ -1,0 +1,11 @@
+.footerArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: #134074;
+    padding: 5px 10px;
+}
+.footerCopyright{
+    font-size: 12px;
+}

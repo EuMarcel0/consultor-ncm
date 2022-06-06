@@ -21,4 +21,9 @@ export type Item = {
     min_price: '';
     avg_price: '';
     price: '';
+    current_page: '';
+    per_page: '';
+    total_pages: '';
+    total_count: '';
+    next_page: '';
 }
