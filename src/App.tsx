@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, useEffect, createElement, useRef } from 'react'
+import { ChangeEvent, useState, useEffect, createElement, useRef } from 'react';
 import style from './App.module.css';
 import { Button, Container, Divider, TextField } from '@material-ui/core';
 import { Header } from './components/Header/header';
@@ -43,7 +43,7 @@ function App() {
 			let response = await fetch(`${BASE_URL}${searchItem}`, {
 				headers: {
 					'Content-Type': 'application/json',
-					'X-Cosmos-Token': 'K1-bSevW2CDAGQf3jXCnGw',
+					'X-Cosmos-Token': 'NHGsLSuKLuKT8dArmcxiCQ',
 					'User-Agent': 'Cosmos-API-Request'
 				}
 			})
