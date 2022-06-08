@@ -50,3 +50,15 @@
     font-size: .8rem;
     font-weight: 200;
 }
+
+@media (max-width: 501px){
+    .contactNumber,
+    .contactEmail,
+    .contactGit,
+    .contactLinkedin{
+        display: none;
+    }
+    .contactArea{
+        gap: 10px;
+    }
+}

@@ -17,7 +17,7 @@ li{
 }
 
 .container{
-  min-height: 84vh;
+  min-height: 86vh;
   max-height: auto;
 } 
 .searchInput{
@@ -100,4 +100,20 @@ li{
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+@media(max-width:768px){
+  .itemsContainer{
+    width: 90%;
+  }
+}
+@media(max-width:765px){
+  .root{
+    width: 90%;
+  }
+}
+@media(max-width: 500px){
+  label{
+    font-size: 10px !important;
+  }
 }

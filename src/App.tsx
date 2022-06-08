@@ -94,7 +94,7 @@ function App() {
 								className={style.inputArea}
 								id="filled-secondary"
 								label="Informe o nome ou o código de barras do item. Ex: Arroz"
-								fullWidth
+								fullWidth={true}
 								color="primary"
 								onChange={handleInputArea}
 								onKeyUp={handleEnterSearchItem}
@@ -123,7 +123,7 @@ function App() {
 								onClick={handleClearResults}
 								color='secondary'
 							>
-								Limpar resultados
+								Limpar
 							</Button>
 						}
 					</div>
