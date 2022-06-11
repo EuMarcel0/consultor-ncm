@@ -2,7 +2,6 @@ import { ChangeEvent, useState, useEffect, createElement, useRef } from 'react';
 import style from './App.module.css';
 import { Button, Container, Divider, TextField } from '@mui/material';
 import { Header } from './components/Header/header';
-import { FaSearch } from 'react-icons/fa';
 import DetailsAccordion from './components/Details/details'
 import noImage from './assets/images/no_image.png';
 import { Item } from './Types';
@@ -11,6 +10,7 @@ import { AlertInput } from './components/AlertInput/alertInput';
 import ScrollToTop from 'react-scroll-to-top';
 import { Footer } from './components/Footer/footer';
 import { AlertNoResults } from './components/AlertNoResults/alertNoResult';
+import { BsSearch } from 'react-icons/bs';
 
 
 function App() {
@@ -82,7 +82,7 @@ function App() {
 					<div className={style.searchInput}>
 						<div className={style.searcheTextAndIcon}>
 							<h1>Consulte o NCM do seu produto</h1>
-							<FaSearch />
+							<BsSearch />
 						</div>
 						<form
 							className={style.root}
