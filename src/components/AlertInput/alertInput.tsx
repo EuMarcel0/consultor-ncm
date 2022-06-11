@@ -1,20 +1,7 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import { Alert, AlertTitle } from '@material-ui/lab';
+import { Alert, AlertTitle } from '@mui/material';
 import style from './alertInput.module.css';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      width: '50%',
-      '& > * + *': {
-        marginTop: theme.spacing(2),
-      },
-    },
-  }),
-);
-
 export const AlertInput = () => {
-    const classes = useStyles();
     return(
         <div className={style.root}>
             <Alert severity="warning">

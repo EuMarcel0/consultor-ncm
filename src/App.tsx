@@ -1,6 +1,6 @@
 import { ChangeEvent, useState, useEffect, createElement, useRef } from 'react';
 import style from './App.module.css';
-import { Button, Container, Divider, TextField } from '@material-ui/core';
+import { Button, Container, Divider, TextField } from '@mui/material';
 import { Header } from './components/Header/header';
 import { FaSearch } from 'react-icons/fa';
 import DetailsAccordion from './components/Details/details'

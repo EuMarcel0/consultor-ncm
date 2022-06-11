@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import React, { useState } from 'react';
 import style from './menu.module.css';
 import {LinkConsultCosmos} from '../../services';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import MoreIcon from '@mui/icons-material/MoreVert';
 
 
 const consultGpc = LinkConsultCosmos.gpcAllCosmos;
@@ -33,7 +32,7 @@ export const MenuLinks = () => {
                 aria-haspopup="true"
                 onClick={handleClick}
             >
-                <MoreVertIcon className={style.buttonMenu} />
+                <MoreIcon className={style.buttonMenu} />
             </IconButton>
             <Menu
                 id="long-menu"

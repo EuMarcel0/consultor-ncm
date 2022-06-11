@@ -1,31 +1,17 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {  
+        Accordion, 
+        AccordionSummary, 
+        Typography,
+} from '@mui/material';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 import React from 'react';
 import { Item } from '../../Types';
 import style from './details.module.css';
 
 const originDataUrl = 'https://cosmos.bluesoft.com.br/';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            width: '100%',
-        },
-        heading: {
-            fontSize: theme.typography.pxToRem(15),
-            flexBasis: '33.33%',
-            flexShrink: 0,
-        },
-        secondaryHeading: {
-            fontSize: theme.typography.pxToRem(15),
-            color: theme.palette.text.secondary,
-        },
-    }),
-);
 
 type DetailsProps = {
     details: Item;
@@ -33,7 +19,6 @@ type DetailsProps = {
 
 
 export default function DetailsAccordion({details} : DetailsProps) {
-    const classes = useStyles();
 
     const [expanded, setExpanded] = React.useState<string | false>(false);
 

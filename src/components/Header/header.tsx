@@ -1,5 +1,5 @@
 import style from './header.module.css';
-import { Container } from '@material-ui/core';
+import { Container } from '@mui/material';
 import { FaWhatsapp, FaEnvelope, FaBarcode, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MenuLinks }  from '../Menu/menu';
 import { linksSocialMedia } from '../../services';
