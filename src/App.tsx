@@ -22,6 +22,7 @@ function App() {
 	const [clearResult, setClearResult] = useState(false);
 	const [alertInput, setAlertInput] = useState(false);
 	const [alertNoResult, setAlertNoResult] = useState(false);
+	const [lengthCount , setLengthCount] = useState(false);
 
 	const [searchItem, setSearchItem] = useState('');
 	const [items, setItems] = useState<Item[]>([]);
@@ -43,21 +44,24 @@ function App() {
 			let response = await fetch(`${BASE_URL}${searchItem}`, {
 				headers: {
 					'Content-Type': 'application/json',
-					'X-Cosmos-Token': 'NHGsLSuKLuKT8dArmcxiCQ',
+					'X-Cosmos-Token': 'K1-bSevW2CDAGQf3jXCnGw',
 					'User-Agent': 'Cosmos-API-Request'
 				}
 			})
-			setLoading(false)
-			setClearResult(true)
-			setAlertInput(false)
+			setLoading(false);
+			setClearResult(true);
+			setAlertInput(false);
 			let data = await response.json();
-			setItems(data.products)
+			setItems(data.products);
 			if(data.total_count === 0){
-				setAlertNoResult(true)
-				setClearResult(false)
+				setAlertNoResult(true);
+				setClearResult(false);
+				setLengthCount(false);
+			}else if(data.total_count > 5){
+				setLengthCount(true);
 			}else{
-				setAlertNoResult(false)
-				setClearResult(true)
+				setAlertNoResult(false);
+				setClearResult(true);
 			}
 			
 		}
@@ -72,6 +76,7 @@ function App() {
 	const handleClearResults = () => {
 		setItems([]);
 		setClearResult(false);
+		setLengthCount(false);
 	}
 
 	return (
@@ -157,7 +162,7 @@ function App() {
 								</div>
 							</>
 						))}
-						{clearResult &&
+						{lengthCount &&
 							<div className={style.clearResults}>
 								<Button
 									variant="contained"
@@ -166,7 +171,7 @@ function App() {
 									onClick={handleClearResults}
 									color='secondary'
 								>
-									Limpar resultados
+									Limpar
 								</Button>
 							</div>
 						}
