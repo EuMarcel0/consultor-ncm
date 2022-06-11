@@ -11,6 +11,7 @@ import ScrollToTop from 'react-scroll-to-top';
 import { Footer } from './components/Footer/footer';
 import { AlertNoResults } from './components/AlertNoResults/alertNoResult';
 import { BsSearch } from 'react-icons/bs';
+import  ArrowTop  from './assets/images/arrow.png';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
 	const [items, setItems] = useState<Item[]>([]);
 
 	const imageNotFound = noImage;
+	const arrowScrollToTop = ArrowTop;
 
 	const handleInputArea = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearchItem(e.target.value);
@@ -68,7 +70,7 @@ function App() {
 	}
 
 	const handleEnterSearchItem = (event: React.KeyboardEvent<HTMLInputElement>) => {	
-		if(event.code === 'Enter') {
+		if(event.code === 'Enter' || event.code === 'NumpadEnter') {
 			handleSearchItem()
 		}
 	}
@@ -78,6 +80,7 @@ function App() {
 		setClearResult(false);
 		setLengthCount(false);
 	}
+
 
 	return (
 		<>
@@ -177,12 +180,13 @@ function App() {
 						}
 					</div>
 				</Container>
-				<Footer />
-				<div>
-					<ScrollToTop 
+				<ScrollToTop className={style.scrollToTop}
+					color="white"
+					width="100%"
 					smooth
-					color='blue'/>
-				</div>
+					top={200}
+				/>
+				<Footer />
 			</div>
 		</>
 	);

@@ -48,7 +48,7 @@ li{
   padding: 30px !important;
   line-height: 0px !important;
   text-transform: capitalize !important;
-  width: 90% !important;
+  width: 50% !important;
   background-color: #386fa4 !important;
 }
 .buttonClear{
@@ -101,6 +101,18 @@ li{
   display: flex;
   justify-content: center;
 }
+.scrollToTop{
+  background-color: #134074;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  right: 20px;
+  bottom: 50px;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 99999;
+}
 
 @media(max-width:768px){
   .itemsContainer{
@@ -115,5 +127,11 @@ li{
 @media(max-width: 500px){
   label{
     font-size: 10px !important;
+  }
+}
+@media(max-width: 425px){
+  .margin,
+  .buttonClear{
+    width: 90% !important;
   }
 }
