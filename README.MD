@@ -1,18 +1,14 @@
 # Catálogo NCM de mercadorias
 
-🚧Deploying...🚧
-
 
 <img src='src/assets/images/project_print0.png'>
-<img src='src/assets/images/project_print1.png'>
-<img src='src/assets/images/project_print2.png'>
 
 Esta aplicação foi desenvolvida para buscar NCMs de mercadorias e mostrar em tela para o usuário. Ela está consumindo uma API do [COSMOS](https://cosmos.bluesoft.com.br/api) e tem um limite máximo de consultas por dia. 
 Todo o design do projeto foi pensado e desenvolvido por mim, buscando sempre trazer uma aplicação leve e visualmente intuitiva.
 
 ## 🚀 Começando
 
-Para acessar o projeto basta clicar aqui: "Deploying..."
+Para acessar o projeto basta clicar aqui: [Get NCM](https://consultor-ncm.netlify.app/)
 
 ### 🎥 Usabilidade e funcionalidades
 
@@ -26,7 +22,6 @@ Todo o projeto foi construído utilizando:
 * [React](https://pt-br.reactjs.org/docs/getting-started.html)
 * [TypeScript](https://www.typescriptlang.org/docs/)
 * [Material UI](https://v4.mui.com/)
-* [Font Awesome](https://fontawesome.com/icons)
 * [CSS Module](https://github.com/css-modules/css-modules)
 * [API](https://cosmos.bluesoft.com.br/api)
 
