@@ -29,7 +29,6 @@ function App() {
 	const [items, setItems] = useState<Item[]>([]);
 
 	const imageNotFound = noImage;
-	const arrowScrollToTop = ArrowTop;
 
 	const handleInputArea = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearchItem(e.target.value);
@@ -53,6 +52,7 @@ function App() {
 			setLoading(false);
 			setClearResult(true);
 			setAlertInput(false);
+			setAlertNoResult(false);
 			let data = await response.json();
 			setItems(data.products);
 			if(data.total_count === 0){
